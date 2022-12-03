@@ -99,7 +99,7 @@ inquirer
             type: 'list',
             name: 'employee',
             message: 'Add the team below:',
-            choices: ['Engineer', new inquirer.Separator(), 'Intern', new inquirer.Separator(), 'Exit'],
+            choices: ['Engineer', new inquirer.Separator(), 'Intern', new inquirer.Separator(), 'Employee', new inquirer.Separator(), 'Exit'],
         },
         {
             type: 'input',
