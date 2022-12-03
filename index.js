@@ -3,7 +3,7 @@ const fs = require('fs');
 const { listenerCount } = require('process');
 
 const generateHTML = (data) =>
-`
+  `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,10 +34,9 @@ const generateHTML = (data) =>
                 <div class="col">
                   <div class="card">
                     <div class="card-body">
-                      <h5 class="card-title">${data.engineer}</h5>
+                      <h5 class="card-title">${data.employee}</h5>
                       <p class="card-text">${data.id}</p>
                       <p>${data.email}</p>
-                      <p>${data.github}</p>
                     </div>
                   </div>
                 </div>
@@ -74,81 +73,102 @@ const generateHTML = (data) =>
 `
 
 inquirer
-    .createPromptModule([
-        {
-            type: 'input',
-            name: 'title',
-            message: 'What is the name of the manager?',
-        },
-        {
-            type: 'input',
-            name: 'id',
-            message: 'What is the employee ID?',
-        },
-        {
-            type: 'input',
-            name: 'email',
-            message: 'What is the email contact?',
-        },
-        {
-            type: 'input',
-            name: 'phone',
-            message: 'What is the office number to be listed?',
-        },
+  .prompt([
+    {
+      type: 'input',
+      name: 'title',
+      message: 'What is the name of the manager?',
+    },
+    {
+      type: 'input',
+      name: 'id',
+      message: 'What is the employee ID?',
+    },
+    {
+      type: 'input',
+      name: 'email',
+      message: 'What is the email contact?',
+    },
+    {
+      type: 'input',
+      name: 'phone',
+      message: 'What is the office number to be listed?',
+    },
 
-        {
-            type: 'list',
-            name: 'employee',
-            message: 'Add the team below:',
-            choices: ['Engineer', new inquirer.Separator(), 'Intern', new inquirer.Separator(), 'Exit'],
-        },
-        {
-            type: 'input',
-            name: 'engineer',
-            message: 'What is the employee name?',
-        },
-        {
-            type: 'input',
-            name: 'id',
-            message: 'What is the employee ID?',
-        },
-        {
-            type: 'input',
-            name: 'github',
-            message: 'What is the GitHub link?',
-        },
-        {
-            type: 'input',
-            name: 'email',
-            message: 'What is the email contact?',
-        },
-        {
-            type: 'list',
-            name: 'add employee',
-            message: 'Add the team below:',
-            choices: ['Engineer', new inquirer.Separator(), 'Intern', new inquirer.Separator(), 'Exit']
-        },
-        {
-            type: 'input',
-            name: 'intern',
-            message: 'What is the intern name?',
-        },
-        {
-            type: 'input',
-            name: 'id',
-            message: 'What is the intern ID?',
-        },
-        {
-            type: 'input',
-            name: 'school',
-            message: 'What is the GitHub link?',
-        },
-    ])
+    {
+      type: 'list',
+      name: 'employees',
+      message: 'Add the team below:',
+      choices: ['Employee', new inquirer.Separator(), 'Engineer', new inquirer.Separator(), 'Intern', new inquirer.Separator(), 'Exit'],
+    },
+    {
+      type: 'input',
+      name: 'employee',
+      message: 'What is the employee name?',
+    },
+    {
+      type: 'input',
+      name: 'id',
+      message: 'What is the employee ID?',
+    },
+    {
+      type: 'input',
+      name: 'email',
+      message: 'What is the email contact?',
+    },
+    {
+      type: 'list',
+      name: 'employees',
+      message: 'Add the team below:',
+      choices: ['Employee', new inquirer.Separator(), 'Engineer', new inquirer.Separator(), 'Intern', new inquirer.Separator(), 'Exit'],
+    },
+    {
+      type: 'input',
+      name: 'engineer',
+      message: 'What is the employee name?',
+    },
+    {
+      type: 'input',
+      name: 'id',
+      message: 'What is the employee ID?',
+    },
+    {
+      type: 'input',
+      name: 'github',
+      message: 'What is the GitHub link?',
+    },
+    {
+      type: 'input',
+      name: 'email',
+      message: 'What is the email contact?',
+    },
+    {
+      type: 'list',
+      name: 'add employee',
+      message: 'Add the team below:',
+      choices: ['Employee', new inquirer.Separator(), 'Engineer', new inquirer.Separator(), 'Intern', new inquirer.Separator(), 'Exit'],
+    },
+    {
+      type: 'input',
+      name: 'intern',
+      message: 'What is the intern name?',
+    },
+    {
+      type: 'input',
+      name: 'id',
+      message: 'What is the intern ID?',
+    },
+    {
+      type: 'input',
+      name: 'school',
+      message: 'What is the name of the school?',
+    },
+  ])
 
-    .then((data) => {
-        const html = generateHTML(data)
-    
-        fs.writeFile('index.html', html, (err) =>
-          err ? console.log(err) : console.log('Success!')
-        );
-      });
+  .then((data) => {
+    const html = generateHTML(data)
+
+    fs.writeFile('index.html', html, (err) =>
+      err ? console.log(err) : console.log('Success!')
+    );
+  });
