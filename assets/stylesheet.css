@@ -1,0 +1,17 @@
+#h1 {
+    width: 96%;
+    background: cornflowerblue;
+    border: 8px gold ridge;
+    font-size: 50px;
+    text-align: center;
+    color: black;
+    display:flex;
+    flex: wrap;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+    height: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+};
+
